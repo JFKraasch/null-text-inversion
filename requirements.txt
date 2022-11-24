@@ -1,9 +1,0 @@
-git+https://github.com/huggingface/diffusers/
-numpy
-matplotlib
-tqdm
-Pillow
-transformers
-accelerate
-python-dotenv
-flask

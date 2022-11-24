@@ -4,7 +4,9 @@ Unofficial implementation of paper NULL-text Inversion for Editing Real Images u
 In the paper new method for Image inversion using Diffusion models are proposed. Read to get more details.
 
 # Webaverse implementation
-Create config as as seen in configs/room.yaml and call app.py (port 5000)
+Create config as as seen in configs/room.yaml and call app.py (port 5000)\
+The resuling images are stored at './results/{project name}/'
+
 post to addresses to call functions:
 
 1. /DDIM -> extracts latents

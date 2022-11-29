@@ -1,9 +1,9 @@
-project_name: room_app
-prompt: ((Side view)) of an empty class room with glass windows and wooden floor, purple neon lighting, anime
+project_name: room_app_overhead
+prompt: ((Low angle view)) of an empty class room with glass windows and wooden floor, purple neon lighting, anime
 steps: 50
 guidance_scale: 7.5
 image: ./scratch/test2.png
-edited_prompt: ((Top down view)) of an empty class room with glass windows and wooden floor, purple neon lighting, anime
-num_guidance: 3
+edited_prompt: ((Overhead view)) of an empty class room with glass windows and wooden floor, purple neon lighting, anime
+num_guidance: 10
 min_guidance: 1
 max_guidance: 10

@@ -1,0 +1,10 @@
+project_name: cake
+prompt: A cake on a table
+steps: 50
+guidance_scale: 7.5
+image: ./scratch/cake.png
+edited_prompt: A chocolate cake on a table
+num_guidance: 10
+min_guidance: 1
+max_guidance: 10
+N: 10

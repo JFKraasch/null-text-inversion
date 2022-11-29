@@ -11,7 +11,7 @@ def null_text_inversion(
         eta: float = 0.0,
         generator=None,
         T=50,
-        negative_prompt=""
+        negative_prompt=None
 ):
     # get null text embeddings for prompt
     null_text_prompt = ""
@@ -47,7 +47,8 @@ def null_text_inversion(
         # expand the latents if we are doing classifier free guidance
         latent_model_input = pipe.scheduler.scale_model_input(latents, timestep).detach()
         noise_pred_text = pipe.unet(latent_model_input, timestep, encoder_hidden_states=text_embeddings).sample.detach()
-        for _ in range(num_opt_steps):
+
+        for idx in range(num_opt_steps):
             # predict the noise residual
             noise_pred_uncond = pipe.unet(latent_model_input, timestep,
                                           encoder_hidden_states=null_text_embeddings).sample
@@ -58,12 +59,13 @@ def null_text_inversion(
             # compute the previous noisy sample x_t -> x_t-1
             prev_latents_pred = pipe.scheduler.step(noise_pred, timestep, latents, **extra_step_kwargs).prev_sample
             loss = torch.nn.functional.mse_loss(prev_latents_pred, prev_latents).mean()
+
             loss.backward()
+            print(idx, loss, null_text_embeddings.grad.mean())
             optimizer.step()
             optimizer.zero_grad()
             if loss < tol:
                 break
-
         all_null_texts.append(null_text_embeddings.detach().cpu().unsqueeze(0))
         latents = prev_latents_pred.detach()
     return all_latents[-1], torch.cat(all_null_texts)

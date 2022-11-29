@@ -1,0 +1,10 @@
+project_name: jungle
+prompt: A female archeologist in a ((Lush verdant jungle))
+steps: 50
+guidance_scale: 7.5
+image: ./scratch/jungle.png
+edited_prompt: A female archeologist  in a ((vast desert))
+num_guidance: 10
+min_guidance: 0
+max_guidance: 3
+N: 20

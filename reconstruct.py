@@ -9,6 +9,7 @@ def reconstruct(pipe, latents, prompt, null_text_embeddings, guidance_scale=7.5,
     latents = latents.to(pipe.device)
 
     pipe.scheduler.set_timesteps(T)
+    print(len(null_text_embeddings))
     for i, (t, null_text_t) in enumerate(pipe.progress_bar(zip(pipe.scheduler.timesteps, null_text_embeddings))):
         # expand the latents if we are doing classifier free guidance
         latent_model_input = torch.cat([latents] * 2)

@@ -11,7 +11,7 @@ post to addresses to call functions:
 
 1. /DDIM -> extracts latents
 2. /inversion -> performs null-text inversion
-3. /edit -> uses edited prompt to edit image
+3. /naive_edit -> uses edited prompt to edit image
 
 (Utils for testing)\
 /ddim_recon -> reconstruct image without null inversion\
